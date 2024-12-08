@@ -31,6 +31,7 @@ export const TextGenerateEffect = ({
         }
       );
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [scope.current, isInView]);
 
   const renderWords = () => {
@@ -40,7 +41,7 @@ export const TextGenerateEffect = ({
           return (
             <motion.span
               key={word + idx}
-              className="dark:text-white text-black opacity-0"
+              className="!text-purple-700 dark:!text-purple-400 opacity-0 text-3xl"
               style={{
                 filter: filter ? "blur(10px)" : "none",
               }}
