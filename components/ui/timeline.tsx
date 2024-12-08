@@ -2,6 +2,10 @@
 import { useScroll, useTransform, motion } from "framer-motion";
 import React, { useEffect, useRef, useState } from "react";
 import { TextGenerateEffect } from "./text-generate-effect";
+import { FollowerPointerCard } from "./following-pointer";
+import Image from "next/image";
+import { TitleComponent } from "./title-component";
+import { MailIcon, PhoneCall } from "lucide-react";
 
 interface TimelineEntry {
   title: string;
@@ -30,22 +34,67 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
 
   return (
     <div
-      className="w-full bg-white dark:bg-neutral-950 font-sans md:pr-16 md:pl-10"
+      id="timeline"
+      className="w-full bg-white dark:bg-neutral-950 shadow-xl  shadow-purple-400 font-sans md:pr-16 md:pl-10"
       ref={containerRef}
     >
       <div className="max-w-7xl mx-auto py-20 px-6 md:px-8 lg:px-10">
-        <TextGenerateEffect words="Changelog from my journey" duration={1} />
-        <h2 className="text-lg md:text-4xl mb-4 text-black dark:text-white max-w-4xl"></h2>
-        <p className="text-neutral-700 dark:text-neutral-300 text-sm md:text-base max-w-sm">
-          I&apos;ve been working as <b>M E R N</b> stack developer for almost 3
-          years. Here&apos;s a timeline of my journey.
-        </p>
+        <div className="flex">
+          <div>
+            <TextGenerateEffect
+              words="Changelog from my journey"
+              duration={1}
+              className=""
+            />
+            <h2 className="text-lg md:text-4xl mb-4 text-black dark:text-white max-w-4xl"></h2>
+            <p className="text-neutral-700 dark:text-neutral-300 text-sm md:text-base max-w-sm">
+              I&apos;ve been working as <b>M E R N</b> stack developer for
+              almost 3 years. Here&apos;s a timeline of my journey.
+            </p>
+          </div>
+          <div className="w-80 mx-auto my-5">
+            <FollowerPointerCard
+              title={
+                <TitleComponent
+                  title="Dhruv Vanjara"
+                  avatar="https://utfs.io/f/CD47jdoudB6rW16a0bxSmeRAKbkhIMlFitXf7YoP1N85wg3y"
+                />
+              }
+            >
+              <div className="relative overflow-hidden h-full rounded-2xl transition duration-200 group border-purple-500 hover:shadow-xl border ">
+                <div className="w-full aspect-w-16 aspect-h-10  rounded-tr-lg rounded-tl-lg overflow-hidden xl:aspect-w-16 xl:aspect-h-10 relative">
+                  <Image
+                    src={`https://utfs.io/f/CD47jdoudB6rW16a0bxSmeRAKbkhIMlFitXf7YoP1N85wg3y`}
+                    alt="thumbnail"
+                    layout="fill"
+                    objectFit="cover"
+                    className={`group-hover:scale-95 group-hover:rounded-2xl transform object-cover transition duration-200 `}
+                  />
+                </div>
+                <div className=" p-4">
+                  <h2 className="font-bold my-4 text-lg text-purple-300">
+                    Contact me
+                  </h2>
+                  <h2 className=" flex justify-start items-center gap-5 font-normal my-4 text-lg text-neutral-300">
+                    <MailIcon />
+                    <span>vanjaradhruv@gmail.com</span>
+                  </h2>
+                  <h2 className=" flex justify-start items-center gap-5 font-normal my-4 text-lg text-neutral-300">
+                    <PhoneCall />
+                    <span>+91 9687014529</span>
+                  </h2>
+                </div>
+              </div>
+            </FollowerPointerCard>
+          </div>
+        </div>
       </div>
 
       <div ref={ref} className="relative max-w-7xl mx-auto pb-20 ">
         {data.map((item, index) => (
           <div
             key={index}
+            id={item.title}
             className="flex justify-start pt-10 md:pt-40 md:gap-10"
           >
             <div className="sticky flex flex-col md:flex-row z-40 items-center top-40 self-start max-w-xs lg:max-w-sm md:w-full">

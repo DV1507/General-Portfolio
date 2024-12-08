@@ -18,7 +18,7 @@ export default function RootLayout({
     <html lang="en">
       <title>Dhruv Portfolio</title>
       <link rel="icon" href="/favicon.ico" />
-      <body className={openSansFont.className}>
+      <body className={openSansFont.className} suppressHydrationWarning>
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
