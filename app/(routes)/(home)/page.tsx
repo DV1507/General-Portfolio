@@ -1,6 +1,11 @@
+import { Timeline } from "@/components/ui/timeline";
+import { projects } from "@/components/constant";
+
 const HomePage = () => {
   return (
-    <div className="bg-background dark:bg-foreground min-h-screen">herllo</div>
+    <div>
+      <Timeline data={projects} />
+    </div>
   );
 };
 

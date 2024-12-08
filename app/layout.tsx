@@ -1,4 +1,5 @@
 "use client";
+import { ThemeProvider } from "@/components/theme-provider";
 import "./globals.css";
 import { Poppins } from "next/font/google";
 
@@ -17,7 +18,16 @@ export default function RootLayout({
     <html lang="en">
       <title>Dhruv Portfolio</title>
       <link rel="icon" href="/favicon.ico" />
-      <body className={openSansFont.className}>{children}</body>
+      <body className={openSansFont.className}>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="dark"
+          enableSystem
+          disableTransitionOnChange
+        >
+          {children}
+        </ThemeProvider>
+      </body>
     </html>
   );
 }
