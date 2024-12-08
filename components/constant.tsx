@@ -1,13 +1,12 @@
 import Image from "next/image";
 import { TextGenerateEffect } from "./ui/text-generate-effect";
-import { FloatingDock } from "./ui/floating-dock";
 import {
   IconBrandGithub,
   IconBrandLeetcode,
   IconBrandLinkedinFilled,
   IconBrandX,
 } from "@tabler/icons-react";
-const SkillsList = [
+export const SkillsList = [
   {
     title: "Linkedin",
     icon: (
@@ -69,9 +68,6 @@ export const projects = [
           <div className="flex gap-2 items-center text-neutral-700 dark:text-neutral-300 text-xs md:text-lg">
             ✅ Proficient in RabbitMQ, WebSockets, and webhook integration
           </div>
-        </div>
-        <div className="flex items-center justify-start  w-full">
-          <FloatingDock items={SkillsList} />
         </div>
       </div>
     ),

@@ -6,6 +6,9 @@ import { FollowerPointerCard } from "./following-pointer";
 import Image from "next/image";
 import { TitleComponent } from "./title-component";
 import { MailIcon, PhoneCall } from "lucide-react";
+import { FloatingDock } from "./floating-dock";
+import { SkillsList } from "../constant";
+import { CardBody, CardContainer, CardItem } from "./3d-card";
 
 interface TimelineEntry {
   title: string;
@@ -38,8 +41,8 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
       className="w-full bg-white dark:bg-neutral-950 shadow-xl  shadow-purple-400 font-sans md:pr-16 md:pl-10"
       ref={containerRef}
     >
-      <div className="max-w-7xl mx-auto py-20 px-6 md:px-8 lg:px-10">
-        <div className="flex">
+      <div className="max-w-7xl mx-auto  px-6 md:px-8 lg:px-10">
+        <div className="flex justify-between items-center">
           <div>
             <TextGenerateEffect
               words="Changelog from my journey"
@@ -52,41 +55,56 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
               almost 3 years. Here&apos;s a timeline of my journey.
             </p>
           </div>
-          <div className="w-80 mx-auto my-5">
-            <FollowerPointerCard
-              title={
-                <TitleComponent
-                  title="Dhruv Vanjara"
-                  avatar="https://utfs.io/f/CD47jdoudB6rW16a0bxSmeRAKbkhIMlFitXf7YoP1N85wg3y"
-                />
-              }
-            >
-              <div className="relative overflow-hidden h-full rounded-2xl transition duration-200 group border-purple-500 hover:shadow-xl border ">
-                <div className="w-full aspect-w-16 aspect-h-10  rounded-tr-lg rounded-tl-lg overflow-hidden xl:aspect-w-16 xl:aspect-h-10 relative">
-                  <Image
-                    src={`https://utfs.io/f/CD47jdoudB6rW16a0bxSmeRAKbkhIMlFitXf7YoP1N85wg3y`}
-                    alt="thumbnail"
-                    layout="fill"
-                    objectFit="cover"
-                    className={`group-hover:scale-95 group-hover:rounded-2xl transform object-cover transition duration-200 `}
-                  />
+          <CardContainer className="inter-var">
+            <CardBody className="bg-gray-50 relative group/card  dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-auto sm:w-[30rem] h-auto rounded-xl p-6 border  ">
+              <CardItem
+                translateZ="200"
+                className="text-xl font-bold text-neutral-600 dark:text-white flex justify-center items-center mx-auto"
+              >
+                <div className="w-80 mx-auto my-5">
+                  <FollowerPointerCard
+                    title={
+                      <TitleComponent
+                        title="Dhruv Vanjara"
+                        avatar="https://utfs.io/f/CD47jdoudB6rW16a0bxSmeRAKbkhIMlFitXf7YoP1N85wg3y"
+                      />
+                    }
+                  >
+                    <div className="relative overflow-hidden h-full rounded-2xl transition duration-200 group border-purple-500 hover:shadow-xl border ">
+                      <div className="w-full aspect-w-16 aspect-h-10  rounded-tr-lg rounded-tl-lg overflow-hidden xl:aspect-w-16 xl:aspect-h-10 relative">
+                        <Image
+                          src={`https://utfs.io/f/CD47jdoudB6rW16a0bxSmeRAKbkhIMlFitXf7YoP1N85wg3y`}
+                          alt="thumbnail"
+                          layout="fill"
+                          objectFit="cover"
+                          className={`group-hover:scale-95 group-hover:rounded-2xl transform object-cover transition duration-200 `}
+                        />
+                      </div>
+                      <div className=" p-4">
+                        <h2 className="font-bold my-4 text-lg text-purple-300">
+                          Contact me
+                        </h2>
+                        <h2 className=" flex justify-start items-center gap-5 font-normal my-4 text-lg text-neutral-300">
+                          <MailIcon />
+                          <span>vanjaradhruv@gmail.com</span>
+                        </h2>
+                        <h2 className=" flex justify-start items-center gap-5 font-normal my-4 text-lg text-neutral-300">
+                          <PhoneCall />
+                          <span>+91 9687014529</span>
+                        </h2>
+                        <span className="text-lg text-purple-300 font-semibold">
+                          My Social Accounts
+                        </span>
+                      </div>
+                    </div>
+                  </FollowerPointerCard>
                 </div>
-                <div className=" p-4">
-                  <h2 className="font-bold my-4 text-lg text-purple-300">
-                    Contact me
-                  </h2>
-                  <h2 className=" flex justify-start items-center gap-5 font-normal my-4 text-lg text-neutral-300">
-                    <MailIcon />
-                    <span>vanjaradhruv@gmail.com</span>
-                  </h2>
-                  <h2 className=" flex justify-start items-center gap-5 font-normal my-4 text-lg text-neutral-300">
-                    <PhoneCall />
-                    <span>+91 9687014529</span>
-                  </h2>
-                </div>
+              </CardItem>
+              <div className="my-4">
+                <FloatingDock items={SkillsList} />
               </div>
-            </FollowerPointerCard>
-          </div>
+            </CardBody>
+          </CardContainer>
         </div>
       </div>
 
